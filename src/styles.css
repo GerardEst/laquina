@@ -1,0 +1,96 @@
+html,body{
+    margin: 0;
+}
+body {
+    font-family: sans-serif;
+}
+#quad{
+    width: 100vw;
+    
+    max-width: 700px;
+    max-height: 700px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cube{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+.cube.mark{
+    background-color: red;
+}
+  
+
+
+.popup{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: skyblue;
+}
+.popup.show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.roulette{
+    position: relative;
+    --color1: #F15854;
+    --color2: #5DA5DA;
+    --color3: #DECF3F;
+    --color4: #B276B2;
+    --color5: #FAA43A;
+    --color6: #4D4D4D;
+    background: 
+    conic-gradient(
+        var(--color1) 0 10%,
+        var(--color2) 0 20%,
+        var(--color3) 0 30%,
+        var(--color4) 0 40%, 
+        var(--color2) 0 50%,
+        var(--color1) 0 60%,
+        var(--color6) 0 70%,
+        var(--color5) 0 80%,
+        var(--color3) 0 90%,
+        var(--color4) 0 100%
+    );
+    border-radius: 50%;
+    border: 10px solid rgb(107, 74, 74);
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 15px 0px rgba(0,0,0,0.2),
+        inset 0 0 15px 0px rgba(0,0,0,0.2);
+    transition: transform 5s;
+}
+.roulette.fastMode{
+    transition: transform 1s;
+}
+.roulette.slice0{ transform: rotate(0) }
+.roulette.slice1{ transform: rotate(1155deg) }
+.roulette.slice2{ transform: rotate(1120deg) }
+.roulette.slice3{ transform: rotate(1085deg) }
+.roulette.slice4{ transform: rotate(1050deg) }
+.roulette.slice5{ transform: rotate(1015deg) }
+.roulette.slice6{ transform: rotate(980deg) }
+.roulette.slice7{ transform: rotate(935deg) }
+.roulette.slice8{ transform: rotate(900deg) }
+.roulette.slice9{ transform: rotate(865deg) }
+.roulette.slice10{ transform: rotate(830deg) }
+
+.roulette:after{
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30px; height: 30px;
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: 0 0 15px 0px rgba(0,0,0,0.2);
+}
