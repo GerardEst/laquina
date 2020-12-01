@@ -1,6 +1,6 @@
 import * as quadCreator from "./modules/quadCreator.js";
 
-quadCreator.createQuad("#quad", 10);
+quadCreator.createQuad("#quad", 10, 50);
 
 document.addEventListener('keyup',keypress)
 document.querySelector('.popup__close').addEventListener('click',closePopup)
@@ -11,46 +11,64 @@ let control;
 let roulette = document.querySelector('.roulette')
 
 function keypress(e){
-    clearTimeout(control)
-    control = setTimeout(getMessage,1000)
+  clearTimeout(control)
+  control = setTimeout(getMessage,1000)
 
-    document.querySelector('.lastPress').value = e.key
+  message += e.key
+  premarkNum(message,isMarked(message))
+  if(isMarked(message)) document.querySelector('.message').classList.add('repeated')
 
-    message += e.key
-    document.querySelector('.message').textContent = message
+  document.querySelector('.message__input').textContent = message
 }
 function getMessage(){
-    console.log(message)
-    if(/[0-9]/.test(message)){
-        markNum(message)
-        spin(message)
-    }else if(message === 'r'){
-        startRoulette()
-    }
-    message = ''
+  if(/[0-9]/.test(message)){
+    markNum(message)
+    //spin(message)
+  }else if(message === 'r'){
+    startRoulette()
+  }
+  message = ''
+}
+function unmarkAll(){
+  for( let markedCubes of document.querySelectorAll('.cube.premark') ){
+    markedCubes.classList.remove('premark')
+    markedCubes.classList.remove('premark--repeated')
+    markedCubes.classList.remove('repeated')  
+  }
+  document.querySelector('.message').classList.remove('repeated')
+}
+function premarkNum(num, repeated){
+  unmarkAll()
+  if(repeated){
+    document.querySelector(`#cube_${num}`)?.classList.toggle('premark')
+    document.querySelector(`#cube_${num}`)?.classList.toggle('premark--repeated')
+  }else{
+    document.querySelector(`#cube_${num}`)?.classList.toggle('premark')
+  }
 }
 function markNum(num){
-    document.querySelector(`#cube_${num}`)?.classList.toggle('mark')
+  unmarkAll()
+  document.querySelector(`#cube_${num}`)?.classList.toggle('mark')
 }
+const isMarked = num => document.querySelector(`#cube_${num}`)?.classList.contains('mark')
 
 function startRoulette(){
-    console.log("Roulette")
-    document.querySelector('.popup').classList.add('show')
+  console.log("Roulette")
+  document.querySelector('.popup').classList.add('show')
 }
 
 function spin(){
-    roulette.className = "roulette"
-    
-    let trueSlice = Math.ceil(Math.random() * 10);
-    console.log(trueSlice)
-    roulette.classList.add(`slice${trueSlice}`)
-    
+  roulette.className = "roulette"
+  
+  let trueSlice = Math.ceil(Math.random() * 10);
+  console.log(trueSlice)
+  roulette.classList.add(`slice${trueSlice}`)
 }
 
 function resetRoulette(){
-    roulette.className = 'roulette slice0'
+  roulette.className = 'roulette slice0'
 }
 function closePopup(){
-    document.querySelector('.popup').classList.remove('show')
-    resetRoulette()
+  document.querySelector('.popup').classList.remove('show')
+  resetRoulette()
 }

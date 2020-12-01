@@ -1,11 +1,11 @@
-export function createQuad(where,quadSize){
+export function createQuad(where,quadSize,userCubeSize){
 
     let quadContainer = document.querySelector(where)
 
     let containerWidth = quadContainer.clientWidth
     quadContainer.style.height = containerWidth+'px'
     
-    let cubeSize = containerWidth / quadSize
+    let cubeSize = userCubeSize || containerWidth / quadSize
 
     let id=1;
     for(let x=1;x<=quadSize;x++){
