@@ -9,23 +9,34 @@ document.querySelector('.roulette_spin').addEventListener('click',spin)
 let message = '';
 let control;
 let roulette = document.querySelector('.roulette')
+let numbers = JSON.parse(localStorage.getItem('numbers')) || []
+
+initMarks()
+
+function initMarks(){
+  for(let number of numbers) markNum(number)
+}
 
 function keypress(e){
-  clearTimeout(control)
-  control = setTimeout(getMessage,1000)
+  if(/\b[0-9r]+/.test(e.key)){  
+    clearTimeout(control)
+    control = setTimeout(getMessage,1000)
 
-  message += e.key
-  premarkNum(message,isMarked(message))
-  if(isMarked(message)) document.querySelector('.message').classList.add('repeated')
+    message += e.key
+    premarkNum(message,isMarked(message))
+    if(isMarked(message)) document.querySelector('.message').classList.add('repeated')
 
-  document.querySelector('.message__input').textContent = message
+    document.querySelector('.message__input').textContent = message
+  }
 }
 function getMessage(){
-  if(/[0-9]/.test(message)){
-    markNum(message)
-    //spin(message)
-  }else if(message === 'r'){
+  if(message === 'r'){
     startRoulette()
+  }else{
+    markNum(message)
+
+    numbers.push(message)
+    localStorage.setItem("numbers", JSON.stringify(numbers))
   }
   message = ''
 }
