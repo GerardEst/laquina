@@ -125,7 +125,6 @@ body {
     inset 0 0 15px 0px rgba(0,0,0,0.2);
   transition: transform 5s;
 }
-
 .roulette_spin{
   position: fixed;
   bottom: 50px;
@@ -194,10 +193,21 @@ body {
 
 .roulette span{
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: white;
+  width: 40px;
+  height: 40px;
+  background-color: ;
+  background-size: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.roulette .palotes{ background-image: url('./palote.png') }
+.roulette .fuet{ background-image: url('./fuet.png') }
+.roulette .pasta{ background-image: url('./pasta.png') }
+.roulette .cafe{ background-image: url('./cafe.png') }
+.roulette .sugus{ background-image: url('./sugus.png') }
+.roulette .nutella{ background-image: url('./nutella.png') }
+
 .roulette span:nth-child(1){
   top: 290px;
   left: 125px;
