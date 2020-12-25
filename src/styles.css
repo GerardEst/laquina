@@ -202,49 +202,64 @@ body {
 }
 
 .roulette .palotes{ background-image: url('./palote.png') }
-.roulette .fuet{ background-image: url('./fuet.png') }
-.roulette .pasta{ background-image: url('./pasta.png') }
+.roulette .fuet{ 
+  background-image: url('./fuet.png');
+  background-size: 70px;
+  width: 70px;
+  height: 70px;
+}
+.roulette .pasta{ 
+  background-image: url('./pasta.png');
+  background-size: 60px;
+  width: 60px;
+  height: 60px;
+}
 .roulette .cafe{ background-image: url('./cafe.png') }
-.roulette .sugus{ background-image: url('./sugus.png') }
+.roulette .sugus{ 
+  background-image: url('./sugus.png');
+  background-size: 60px;
+  width: 60px;
+  height: 60px;
+}
 .roulette .nutella{ background-image: url('./nutella.png') }
 
 .roulette span:nth-child(1){
   top: 290px;
-  left: 125px;
+  left: 117px;
 }
 .roulette span:nth-child(2){
-  top: 290px;
-  left: 205px;
+  top: 283px;
+  left: 192px;
 }
 .roulette span:nth-child(3){
   top: 240px;
   left: 270px;
 }
 .roulette span:nth-child(4){
-  top: 160px;
-  left: 300px;
-}
-.roulette span:nth-child(5){
-  top: 80px;
+  top: 145px;
   left: 280px;
 }
+.roulette span:nth-child(5){
+  top: 60px;
+  left: 260px;
+}
 .roulette span:nth-child(6){
-  top: 40px;
-  left: 205px;
+  top: 35px;
+  left: 200px;
 }
 .roulette span:nth-child(7){
   top: 30px;
   left: 120px;
 }
 .roulette span:nth-child(8){
-  top: 85px;
-  left: 50px;
+  top: 70px;
+  left: 35px;
 }
 .roulette span:nth-child(9){
-  top: 170px;
-  left: 20px;
+  top: 140px;
+  left: 12px;
 }
 .roulette span:nth-child(10){
   left: 50px;
-  top: 250px;
+  top: 237px;
 }
